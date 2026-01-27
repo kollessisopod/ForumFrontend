@@ -1,0 +1,423 @@
+/* ========================================
+   CSS Variables - Dark Theme
+   ======================================== */
+:root {
+  --bg: #1a1d23;
+  --bg-light: #23262e;
+  --bg-lighter: #2a2e38;
+  --bg-dark: #12141a;
+  --border: rgba(74, 163, 255, 0.15);
+  --text: rgba(233, 238, 247, 0.92);
+  --text-bright: rgba(255, 255, 255, 0.95);
+  --muted: rgba(148, 163, 184, 0.75);
+  --primary: rgba(74, 163, 255, 1);
+  --primary-dim: rgba(74, 163, 255, 0.14);
+  --error: rgba(255, 92, 108, 1);
+}
+
+/* ========================================
+   Global Resets
+   ======================================== */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+}
+
+/* ========================================
+   Layout - App Shell
+   ======================================== */
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.app-shell {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  background: var(--bg-dark);
+  border-bottom: 1px solid var(--border);
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--text-bright);
+}
+
+.brand-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, var(--primary), rgba(74, 163, 255, 0.6));
+  box-shadow: 0 0 12px rgba(74, 163, 255, 0.5);
+}
+
+.topbar-meta {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.badge {
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: var(--primary-dim);
+  color: var(--primary);
+  border: 1px solid rgba(74, 163, 255, 0.3);
+}
+
+.content {
+  display: flex;
+  flex: 1;
+  overflow: hidden;
+}
+
+/* ========================================
+   Sidebar
+   ======================================== */
+.sidebar {
+  width: 320px;
+  background: var(--bg-dark);
+  border-right: 1px solid var(--border);
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.sidebar-title {
+  font-size: 13px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+  margin-bottom: 12px;
+}
+
+/* ========================================
+   Main Content Area
+   ======================================== */
+.main {
+  flex: 1;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+/* ========================================
+   Footer
+   ======================================== */
+.footer {
+  padding: 12px 24px;
+  background: var(--bg-dark);
+  border-top: 1px solid var(--border);
+  text-align: center;
+  font-size: 12px;
+}
+
+/* ========================================
+   Panel Component
+   ======================================== */
+.panel {
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.panel-title {
+  font-size: 18px;
+  font-weight: 800;
+  color: var(--text-bright);
+  margin-bottom: 8px;
+}
+
+.panel-sub {
+  font-size: 13px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.panel-body {
+  font-size: 14px;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+/* ========================================
+   List Component (Entry List)
+   ======================================== */
+.list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.list-item {
+  width: 100%;
+  background: var(--bg-light);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  text-align: left;
+  color: var(--text);
+}
+
+.list-item:hover {
+  background: var(--bg-lighter);
+  border-color: rgba(74, 163, 255, 0.35);
+  transform: translateX(2px);
+}
+
+.list-item.selected {
+  background: var(--primary-dim);
+  border-color: rgba(74, 163, 255, 0.5);
+  box-shadow: 0 0 0 2px rgba(74, 163, 255, 0.1);
+}
+
+.list-item-title {
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--text-bright);
+  margin-bottom: 4px;
+}
+
+.list-item-sub {
+  font-size: 12px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ========================================
+   Entry Detail
+   ======================================== */
+.detail {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+  align-items: flex-start;
+}
+
+.detail-main {
+  flex: 1;
+  max-width: 800px;
+}
+
+.detail-sidebar {
+  width: 320px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 20px;
+}
+
+/* ========================================
+   Comments
+   ======================================== */
+.comments {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  padding-top: 8px;
+}
+
+.comment {
+  background: var(--bg-lighter);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+
+.comment-meta {
+  font-size: 12px;
+  margin-bottom: 8px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.comment-body {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+/* ========================================
+   Typography & Utilities
+   ======================================== */
+.muted {
+  color: var(--muted);
+}
+
+.author {
+  color: var(--primary);
+  font-weight: 600;
+}
+
+.link {
+  color: var(--primary);
+  text-decoration: none;
+  font-weight: 600;
+  transition: opacity 0.15s;
+}
+
+.link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+/* ========================================
+   Loading Component
+   ======================================== */
+.loading {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  padding: 40px;
+}
+
+.spinner {
+  width: 32px;
+  height: 32px;
+  border: 3px solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ========================================
+   Error Banner
+   ======================================== */
+.error {
+  background: rgba(255, 92, 108, 0.12);
+  border: 1px solid rgba(255, 92, 108, 0.35);
+  border-radius: 12px;
+  padding: 16px;
+  margin: 16px;
+}
+
+.error-title {
+  font-size: 14px;
+  font-weight: 800;
+  color: var(--error);
+  margin-bottom: 6px;
+}
+
+.error-body {
+  font-size: 13px;
+  color: var(--text);
+}
+
+/* ========================================
+   Forms
+   ======================================== */
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.form-title {
+  font-weight: 800;
+  margin-bottom: 2px;
+}
+
+.label {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+.input, .textarea {
+  width: 100%;
+  border: 1px solid var(--border);
+  background: rgba(18, 20, 23, 0.35);
+  color: var(--text);
+  border-radius: 12px;
+  padding: 10px 10px;
+  outline: none;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.textarea { 
+  resize: vertical;
+  line-height: 1.5;
+}
+
+.input::placeholder,
+.textarea::placeholder {
+  color: var(--muted);
+  opacity: 0.6;
+}
+
+.input:focus, .textarea:focus {
+  border-color: rgba(74, 163, 255, 0.55);
+  box-shadow: 0 0 0 3px rgba(74, 163, 255, 0.10);
+}
+
+.btn {
+  cursor: pointer;
+  border: 1px solid rgba(74, 163, 255, 0.50);
+  background: rgba(74, 163, 255, 0.14);
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 12px;
+  font-weight: 800;
+  font-size: 14px;
+  font-family: inherit;
+  transition: all 0.15s ease;
+}
+
+.btn:hover {
+  background: rgba(74, 163, 255, 0.18);
+  border-color: rgba(74, 163, 255, 0.70);
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+}
+
+.form-error {
+  border: 1px solid rgba(255, 92, 108, 0.35);
+  background: rgba(255, 92, 108, 0.10);
+  border-radius: 12px;
+  padding: 10px 12px;
+  color: rgba(233, 238, 247, 0.92);
+  font-size: 12px;
+}
