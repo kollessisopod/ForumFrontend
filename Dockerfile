@@ -2,16 +2,14 @@
 FROM node:20-alpine AS build
 WORKDIR /app
 
-# Copy manifests first for caching
+# Copy only package.json first (cache friendly)
 COPY package.json ./
-# Copy lockfile if it exists (one of these). If none exists, npm will still work with npm install.
-COPY package-lock.json* ./
-COPY npm-shrinkwrap.json* ./
 
-RUN if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then npm ci; else npm install; fi
-
-# Copy the rest
+# Copy the rest (includes package-lock.json / npm-shrinkwrap.json if present)
 COPY . .
+
+# Install deps depending on which lock exists
+RUN if [ -f package-lock.json ] || [ -f npm-shrinkwrap.json ]; then npm ci; else npm install; fi
 
 RUN npm run build
 
